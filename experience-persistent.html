@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Systems Experience | Shreya Kale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #a855f7;
+            --accent: #ff006e;
+            --dark: #0a0e27;
+            --darker: #050816;
+            --light: #e8f4f8;
+            --gradient-ai: linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff006e 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--darker);
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+        }
+
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--secondary);
+            bottom: -300px;
+            left: -300px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+
+        nav {
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'IBM Plex Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: var(--darker);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-date {
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .section-content {
+            color: rgba(232, 244, 248, 0.85);
+            line-height: 1.8;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bullet-item {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.03);
+            border-left: 3px solid var(--primary);
+            border-radius: 10px;
+        }
+
+        .bullet-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: rgba(232, 244, 248, 0.7);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(112, 0, 255, 0.1);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            border-radius: 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        .team-info {
+            background: rgba(112, 0, 255, 0.05);
+            border-left: 3px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SHREYA.AI</a>
+            <a href="index.html#experience" class="back-btn">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">MACHINE LEARNING ENGINEER</h1>
+            <p class="page-subtitle">Persistent Systems, India</p>
+            <p class="page-date">April 2020 – July 2023</p>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="content-section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="section-content">
+                <p><strong>Enterprise Credit Risk & Real-Time Fraud Detection Platform</strong></p>
+                <p style="margin-top: 1rem;">
+                    This project was focused on building a scalable, data-driven credit risk and fraud detection platform for 
+                    a financial services client. The client faced challenges with manual underwriting, delayed loan approvals, 
+                    inaccurate default predictions, and high false fraud alerts. Existing rule-based systems were not adaptive 
+                    to changing customer behavior and transaction patterns. The objective was to design and deploy machine 
+                    learning-based credit risk scoring, customer risk segmentation, and real-time fraud detection systems, 
+                    integrated with cloud infrastructure and production-ready ML services.
+                </p>
+            </div>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="content-section">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">29%</span>
+                    <span class="metric-label">Improved Default Prediction</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">42%</span>
+                    <span class="metric-label">Reduced Manual Underwriting</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">34%</span>
+                    <span class="metric-label">Increased Fraud Detection</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">26%</span>
+                    <span class="metric-label">Reduced False Fraud Alerts</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">18%</span>
+                    <span class="metric-label">Faster Decision Turnaround</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deliverables -->
+        <div class="content-section">
+            <h2 class="section-title">Project Deliverables</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Credit risk prediction models with XGBoost and Scikit-learn pipelines</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Customer risk segmentation system using Random Forest</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Real-time fraud detection pipeline with PySpark ML and Kafka integration</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Behavioral risk feature framework with statistical modeling</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Deployed REST APIs for scoring with Flask and Docker</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Comprehensive Power BI dashboards for business insights</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Documentation and validation reports for model governance</div>
+                </li>
+            </ul>
+        </div>
+<!-- Project Phases -->
+        <div class="content-section">
+            <h2 class="section-title">Project Timeline & Phases</h2>
+            <div class="section-content">
+                <p><strong>Total Duration:</strong> ~3 years (Apr 2020 – Jul 2023)</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 1: Requirements & Data Analysis</div>
+                        <p>Business understanding, data analysis, and baseline modeling. Analyzed existing systems and identified improvement opportunities.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 2: Credit Risk Modeling</div>
+                        <p>Credit risk modeling and underwriting intelligence. Built XGBoost models with feature engineering and hyperparameter tuning.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 3: Customer Segmentation</div>
+                        <p>Customer segmentation and behavioral risk modeling. Implemented Random Forest models for risk categorization.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 4: Real-Time Fraud Detection</div>
+                        <p>Real-time fraud detection using streaming data. Deployed PySpark ML models processing Kafka streams.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 5: Deployment & Scaling</div>
+                        <p>Model deployment, optimization, and production scaling. Containerized models and built CI/CD pipelines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Detailed Responsibilities -->
+        <div class="content-section">
+            <h2 class="section-title">Key Responsibilities & Technical Implementation</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <span class="bullet-icon">💳</span>
+                    <div>
+                        <strong>Credit Risk Modeling</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Built end-to-end workflows with XGBoost and Scikit-learn that made credit decisions smarter 💡</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Trained models on PostgreSQL datasets using AWS EC2 — lots of data, lots of compute</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Tuned hyperparameters and ran cross-validation to get things just right</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Created Power BI dashboards so stakeholders could see what was happening</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Improved default prediction accuracy by 29% 📈</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🔐</span>
+                    <div>
+                        <strong>Customer Risk Segmentation</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Designed Random Forest models to figure out who's risky and who's not</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Processed loan and repayment data from AWS S3 with Pandas feature engineering</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Categorized customers into low, medium, and high-risk buckets ⚖️</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Cut manual underwriting work by 42% — less spreadsheets, more automation</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">⚠️</span>
+                    <div>
+                        <strong>Real-Time Fraud Detection</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Built real-time fraud detection with PySpark ML processing Kafka streams 🚨</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Used Isolation Forest & Gradient Boosting to catch suspicious transactions</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Handled massive transaction volumes without breaking a sweat</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Boosted fraud detection by 34% while keeping false alarms low</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">📊</span>
+                    <div>
+                        <strong>Behavioral Risk Evaluation</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Engineered features like transaction velocity and spending patterns</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Applied NumPy statistical modeling to spot unusual behavior 🔍</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Caught sudden spikes and weird patterns that humans might miss</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Dropped false alerts by 26% so teams could focus on real threats</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🚀</span>
+                    <div>
+                        <strong>Model Deployment</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Shipped models via Flask APIs that delivered instant scoring</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Containerized everything with Docker for smooth deployments</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Managed workflows with Git version control because organized code is happy code 😊</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Sped up decision-making by 18%</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🔍</span>
+                    <div>
+                        <strong>Data Engineering & Feature Engineering</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Worked with PostgreSQL lending datasets that needed some serious cleaning</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Handled missing values, outliers, and all the messy stuff real data throws at you</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Created features like credit utilization, repayment consistency, and transaction velocity ⚡</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">📈</span>
+                    <div>
+                        <strong>Business Intelligence & Visualization</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Built Power BI dashboards that actually made sense to business folks</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Displayed everything from approval rates to fraud metrics in one place</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Helped teams make data-driven decisions instead of guessing 🎯</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">👥</span>
+                    <div>
+                        <strong>Cross-functional Collaboration</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Teamed up with business analysts, risk teams, and DevOps to get stuff done</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Translated "we need to reduce defaults" into actual ML features and models</li>
+                            <li style="padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">▸</span>Explained AI in ways that didn't make people's eyes glaze over 🤝</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+<!-- Technology Stack -->
+        <div class="content-section">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="section-content">
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Random Forest</span>
+                    <span class="tech-tag">Isolation Forest</span>
+                    <span class="tech-tag">Gradient Boosting</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">PySpark ML</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">AWS EC2</span>
+                    <span class="tech-tag">Kafka</span>
+                    <span class="tech-tag">Apache Spark</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+
+            </div>
+</body>
+</html>

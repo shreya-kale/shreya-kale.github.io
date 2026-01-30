@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya Rahul Kale | AI/ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #a855f7;
+            --accent: #ff006e;
+            --dark: #0a0e27;
+            --darker: #050816;
+            --light: #e8f4f8;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-ai: linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff006e 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--darker);
+            overflow: hidden;
+        }
+
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+        }
+
+        .neural-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -200px;
+            left: -200px;
+        }
+
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--secondary);
+            bottom: -300px;
+            right: -300px;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(100px, -100px) rotate(120deg); }
+            66% { transform: translate(-100px, 100px) rotate(240deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-ai);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            color: rgba(232, 244, 248, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-ai);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1200px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--primary);
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            max-width: 66.66%;
+        }
+
+        .exp-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .exp-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-company {
+            font-size: 1.2rem;
+            color: var(--light);
+        }
+
+        .exp-date {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .exp-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .highlight-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .highlight-text {
+            flex: 1;
+            color: rgba(232, 244, 248, 0.8);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            transition: all 0.4s;
+        }
+
+        .project-card:hover::after {
+            transform: translate(50%, -50%) scale(1.5);
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: rgba(232, 244, 248, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: rgba(232, 244, 248, 0.6);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Education & Certifications */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .edu-card, .cert-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s;
+        }
+
+        .edu-card:hover, .cert-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .section-subtitle-large {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .edu-degree {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-school {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-date {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            padding: 1rem;
+            background: rgba(112, 0, 255, 0.05);
+            border-left: 3px solid var(--secondary);
+            border-radius: 10px;
+        }
+
+        .cert-name {
+            color: var(--light);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-org {
+            font-size: 0.85rem;
+            color: rgba(232, 244, 248, 0.6);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-me-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .about-me-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-me-text {
+            color: rgba(232, 244, 248, 0.8);
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--light);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            background: rgba(10, 14, 39, 0.5);
+            border-top: 1px solid var(--card-border);
+            font-family: 'IBM Plex Mono', monospace;
+            color: rgba(232, 244, 248, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .projects-grid, .edu-cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .exp-card {
+                max-width: 100%;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="neural-network" id="neuralNet"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SHREYA.AI</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">SHREYA KALE</h1>
+            <p class="hero-subtitle">AI/ML Engineer | GenAI Specialist | Financial Risk & Fraud Analytics</p>
+            <p class="hero-description">
+                Hey there! I'm an AI/ML Engineer who's spent the last 4 years turning messy financial data into smart 
+                systems that actually work. From building LLM-powered document analyzers to catching fraud in real-time, 
+                I love creating AI solutions that don't just look good on paper—they make people's jobs easier and 
+                businesses smarter. Whether it's cutting review time by 50% or deploying models to the cloud, I'm all 
+                about that production-ready, real-world impact. Let's build something cool together! 🚀
+            </p>
+            <div class="hero-cta">
+                <a href="Shreya__Kale_-_Resume_-_AI.pdf" class="btn btn-primary" download>Download Resume</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SKILLS & EXPERTISE</h2>
+                <p class="section-subtitle">Technical Capabilities & Domain Knowledge</p>
+            </div>
+            <div class="skills-grid fade-in">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-title">Programming & Scripting</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">SQL</li>
+                        <li class="skill-tag">Scala</li>
+                        <li class="skill-tag">Bash</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🤖</div>
+                    <h3 class="skill-title">Machine Learning & AI</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Supervised Learning</li>
+                        <li class="skill-tag">Feature Engineering</li>
+                        <li class="skill-tag">Model Training</li>
+                        <li class="skill-tag">Classification</li>
+                        <li class="skill-tag">Regression</li>
+                        <li class="skill-tag">Clustering</li>
+                        <li class="skill-tag">Time Series</li>
+                        <li class="skill-tag">Anomaly Detection</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🧠</div>
+                    <h3 class="skill-title">Deep Learning & GenAI</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Neural Networks</li>
+                        <li class="skill-tag">CNN</li>
+                        <li class="skill-tag">RNN/LSTM</li>
+                        <li class="skill-tag">Transformers</li>
+                        <li class="skill-tag">LLMs</li>
+                        <li class="skill-tag">RAG</li>
+                        <li class="skill-tag">Prompt Engineering</li>
+                        <li class="skill-tag">Fine-Tuning</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">📚</div>
+                    <h3 class="skill-title">Frameworks & Libraries</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Scikit-learn</li>
+                        <li class="skill-tag">TensorFlow</li>
+                        <li class="skill-tag">PyTorch</li>
+                        <li class="skill-tag">XGBoost</li>
+                        <li class="skill-tag">LightGBM</li>
+                        <li class="skill-tag">Hugging Face</li>
+                        <li class="skill-tag">LangChain</li>
+                        <li class="skill-tag">OpenAI APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <h3 class="skill-title">Cloud & MLOps</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">AWS SageMaker</li>
+                        <li class="skill-tag">Azure ML</li>
+                        <li class="skill-tag">Docker</li>
+                        <li class="skill-tag">Kubernetes</li>
+                        <li class="skill-tag">MLflow</li>
+                        <li class="skill-tag">Git/GitHub</li>
+                        <li class="skill-tag">CI/CD</li>
+                        <li class="skill-tag">Airflow</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">💼</div>
+                    <h3 class="skill-title">Finance & Analytics</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag">Risk Analytics</li>
+                        <li class="skill-tag">Credit Risk</li>
+                        <li class="skill-tag">Fraud Detection</li>
+                        <li class="skill-tag">Regulatory AI</li>
+                        <li class="skill-tag">Model Validation</li>
+                        <li class="skill-tag">Bias Detection</li>
+                        <li class="skill-tag">Agile/Scrum</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">WORK EXPERIENCE</h2>
+                <p class="section-subtitle">Professional Journey in AI/ML Engineering</p>
+            </div>
+            <div class="experience-grid fade-in">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">AI/ML Engineer</h3>
+                            <p class="exp-company">Northern Trust, USA</p>
+                        </div>
+                        <span class="exp-date">Mar 2025 – Present</span>
+                    </div>
+                    <div class="exp-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">⚡</span>
+                            <p class="highlight-text">Implemented high-performance predictive workflows using XGBoost and Random Forest, reducing operational review effort by 45%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🤖</span>
+                            <p class="highlight-text">Designed GenAI document intelligence with Azure OpenAI GPT-4, LangChain RAG, and FAISS, cutting regulatory analysis effort by 50%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🎯</span>
+                            <p class="highlight-text">Engineered transaction anomaly classification improving risk identification accuracy by 31%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">📊</span>
+                            <p class="highlight-text">Stabilized model lifecycle with MLflow governance, lowering false-positive alerts by 27%</p>
+                        </div>
+                    </div>
+                    <a href="experience-northern-trust.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Machine Learning Engineer</h3>
+                            <p class="exp-company">Persistent Systems, India</p>
+                        </div>
+                        <span class="exp-date">Apr 2020 – Jul 2023</span>
+                    </div>
+                    <div class="exp-highlights">
+                        <div class="highlight">
+                            <span class="highlight-icon">💳</span>
+                            <p class="highlight-text">Constructed credit risk workflows with XGBoost, improving default prediction accuracy by 29%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🔐</span>
+                            <p class="highlight-text">Designed customer risk segmentation using Random Forest, reducing manual underwriting by 42%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">⚠️</span>
+                            <p class="highlight-text">Engineered real-time fraud detection with PySpark ML, increasing effectiveness by 34%</p>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-icon">🚀</span>
+                            <p class="highlight-text">Deployed scalable ML services via Flask APIs and Docker, accelerating decisions by 18%</p>
+                        </div>
+                    </div>
+                    <a href="experience-persistent.html" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">FEATURED PROJECTS</h2>
+                <p class="section-subtitle">Innovative AI/ML Solutions</p>
+            </div>
+            <div class="projects-grid fade-in">
+                <div class="project-card">
+                    <h3 class="project-title">LLM-Powered Fraudulent Job Detection</h3>
+                    <p class="project-description">
+                        Developed an advanced fraud detection model using LLMs with prompt engineering and fine-tuning 
+                        techniques to identify fraudulent job listings with exceptional accuracy.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">91%</span>
+                            <span class="metric-label">Precision</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">0.968</span>
+                            <span class="metric-label">ROC-AUC</span>
+                        </div>
+                    </div>
+                    <a href="project-fraud-detection.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Hit Song Prediction in Indian Music</h3>
+                    <p class="project-description">
+                        Engineered a comprehensive ML pipeline using Spotify API data and advanced audio processing 
+                        to predict hit songs in the Indian music industry with multimodal feature extraction.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-value">150+</span>
+                            <span class="metric-label">Features</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">4</span>
+                            <span class="metric-label">Models</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">MFCCs</span>
+                            <span class="metric-label">Top Predictor</span>
+                        </div>
+                    </div>
+                    <a href="project-music-prediction.html" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">EDUCATION & CERTIFICATIONS</h2>
+                <p class="section-subtitle">Academic Background & Professional Development</p>
+            </div>
+            <div class="edu-cert-grid fade-in">
+                <div>
+                    <h3 class="section-subtitle-large">Education</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="edu-card">
+                            <h4 class="edu-degree">Master of Science in Computer Science</h4>
+                            <p class="edu-school">Syracuse University, USA</p>
+                            <p class="edu-date">May 2025</p>
+                        </div>
+                        <div class="edu-card">
+                            <h4 class="edu-degree">Bachelor of Technology in Information Technology</h4>
+                            <p class="edu-school">Savitribai Phule Pune University, India</p>
+                            <p class="edu-date">Jun 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="section-subtitle-large">Certifications</h3>
+                    <div class="cert-card">
+                        <ul class="cert-list">
+                            <li class="cert-item">
+                                <div class="cert-name">Forward Learners Program</div>
+                                <div class="cert-org">McKinsey & Company</div>
+                            </li>
+                            <li class="cert-item">
+                                <div class="cert-name">Python3 Programming Specialization</div>
+                                <div class="cert-org">University of Michigan via Coursera</div>
+                            </li>
+                            <li class="cert-item">
+                                <div class="cert-name">Java Programming</div>
+                                <div class="cert-org">SEED Infotech</div>
+                            </li>
+                            <li class="cert-item">
+                                <div class="cert-name">5-Day AI Agents Intensive Course</div>
+                                <div class="cert-org">Google</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CONTACT ME</h2>
+                <p class="section-subtitle">Let's Connect & Collaborate</p>
+            </div>
+            <div class="contact-grid fade-in">
+                <div class="about-me-box">
+                    <h3 class="about-me-title">About Me</h3>
+                    <p class="about-me-text">
+                        Experienced AI/ML Engineer with around 4 years of experience designing, training, and deploying 
+                        machine learning and generative AI solutions using Python, SQL, deep learning frameworks, and 
+                        cloud-based MLOps platforms for financial risk and fraud use cases. Built end-to-end pipelines 
+                        spanning data preprocessing, feature engineering, model evaluation, CI/CD-driven deployment, and 
+                        model governance, integrating LLMs, RAG workflows, and explainable AI. Partnered with cross-functional 
+                        teams to translate business and regulatory requirements into scalable, production-ready AI systems 
+                        with measurable performance improvements.
+                    </p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:shreyakale0925@gmail.com" class="contact-link">
+                        <span class="contact-icon">📧</span>
+                        <div class="contact-info">
+                            <div class="contact-label">EMAIL</div>
+                            <div class="contact-value">shreyakale0925@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shreya-kale" target="_blank" class="contact-link">
+                        <span class="contact-icon">💼</span>
+                        <div class="contact-info">
+                            <div class="contact-label">LINKEDIN</div>
+                            <div class="contact-value">linkedin.com/in/shreya-kale</div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/shreya-kale" target="_blank" class="contact-link">
+                        <span class="contact-icon">💻</span>
+                        <div class="contact-info">
+                            <div class="contact-label">GITHUB</div>
+                            <div class="contact-value">github.com/shreya-kale</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Shreya Kale. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Neural Network Animation
+        function createNeuralNetwork() {
+            const container = document.getElementById('neuralNet');
+            const nodeCount = 50;
+            
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(node);
+            }
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createNeuralNetwork();
+            handleScrollAnimations();
+        });
+
+        window.addEventListener('scroll', handleScrollAnimations);
+    </script>
+</body>
+</html>

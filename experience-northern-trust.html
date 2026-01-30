@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Trust Experience | Shreya Kale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #a855f7;
+            --accent: #ff006e;
+            --dark: #0a0e27;
+            --darker: #050816;
+            --light: #e8f4f8;
+            --gradient-ai: linear-gradient(135deg, #00d4ff 0%, #7000ff 50%, #ff006e 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--darker);
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -200px;
+            left: -200px;
+        }
+
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: var(--secondary);
+            bottom: -300px;
+            right: -300px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, -50px); }
+        }
+
+        nav {
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'IBM Plex Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: var(--darker);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-date {
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .section-content {
+            color: rgba(232, 244, 248, 0.85);
+            line-height: 1.8;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bullet-item {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.03);
+            border-left: 3px solid var(--primary);
+            border-radius: 10px;
+        }
+
+        .bullet-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: rgba(232, 244, 248, 0.7);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(112, 0, 255, 0.1);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            border-radius: 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        .team-info {
+            background: rgba(112, 0, 255, 0.05);
+            border-left: 3px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SHREYA.AI</a>
+            <a href="index.html#experience" class="back-btn">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">AI/ML ENGINEER</h1>
+            <p class="page-subtitle">Northern Trust, USA</p>
+            <p class="page-date">March 2025 – Present</p>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="content-section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="section-content">
+                <p><strong>Enterprise AI & GenAI-Driven Risk Review and Compliance Intelligence Platform</strong></p>
+                <p style="margin-top: 1rem;">
+                    This project focused on modernizing manual financial risk review and compliance workflows at Northern Trust 
+                    by building a scalable AI and Generative AI-driven decision-support platform. The existing process relied 
+                    heavily on manual reviews of transactions, exposure reports, and regulatory documents, which caused delays, 
+                    high operational cost, and inconsistent risk assessment. The goal was to design predictive risk models, 
+                    transaction anomaly detection systems, and LLM-powered document intelligence, integrated into a governed 
+                    MLOps framework, to support analysts with faster, explainable, and auditable insights.
+                </p>
+            </div>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="content-section">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">45%</span>
+                    <span class="metric-label">Reduction in Manual Review Effort</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">50%</span>
+                    <span class="metric-label">Faster Regulatory Analysis</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">31%</span>
+                    <span class="metric-label">Improved Risk Identification</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">27%</span>
+                    <span class="metric-label">Reduced False Positives</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">38%</span>
+                    <span class="metric-label">Increased Analyst Productivity</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deliverables -->
+        <div class="content-section">
+            <h2 class="section-title">Project Deliverables</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Production-ready risk scoring models with hyperparameter tuning and cross-validation</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Transaction anomaly detection services with precision-recall optimization</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>LLM-powered document intelligence system with RAG architecture</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Automated MLOps pipelines with experiment tracking and model versioning</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>CI/CD-enabled containerized inference services deployed via Docker</div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">✓</span>
+                    <div>Comprehensive explainability and compliance documentation</div>
+                </li>
+            </ul>
+        </div>
+<!-- Project Phases -->
+        <div class="content-section">
+            <h2 class="section-title">Project Timeline & Phases</h2>
+            <div class="section-content">
+                <p><strong>Total Duration:</strong> ~8 months (Mar 2025 – Present)</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 1: Requirements & Data Analysis</div>
+                        <p>Requirements gathering, data analysis, baseline assessment, and identifying key risk indicators</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 2: Predictive Modeling Development</div>
+                        <p>Built risk scoring models using XGBoost and Random Forest, implemented anomaly detection with gradient boosting</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 3: GenAI Implementation</div>
+                        <p>Designed and deployed RAG pipeline with Azure OpenAI GPT-4, LangChain, and FAISS for document intelligence</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 4: MLOps Automation</div>
+                        <p>Implemented automated retraining, monitoring, and model governance using Airflow and MLflow</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-title">Phase 5: Deployment & Optimization</div>
+                        <p>Deployed containerized services with CI/CD, conducted user validation, and performance optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Detailed Responsibilities -->
+        <div class="content-section">
+            <h2 class="section-title">Key Responsibilities & Technical Implementation</h2>
+            <ul class="bullet-list">
+                <li class="bullet-item">
+                    <span class="bullet-icon">🎯</span>
+                    <div>
+                        <strong>Predictive Risk Modeling</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Built predictive workflows with XGBoost & Random Forest on AWS SageMaker ⚡ that actually worked in production
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Threw in CUDA acceleration to speed things up because waiting is boring
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Crunched through Snowflake data and cut manual review time by 45% — analysts loved me for this
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🤖</span>
+                    <div>
+                        <strong>GenAI Document Intelligence</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Designed a RAG pipeline using GPT-4, LangChain, and FAISS to make sense of regulatory docs 📚
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Set up document chunking, embeddings, and vector indexing
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Prompt-engineered my way to accurate responses that compliance teams could trust
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Result? 50% less time spent analyzing regulations — win-win 🎉
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">📊</span>
+                    <div>
+                        <strong>Transaction Anomaly Detection</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Built classification models using logistic regression & gradient boosting
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Processed AWS S3 logs with Pandas for feature extraction
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Tuned precision-recall like a DJ and boosted accuracy by 31%
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">⚙️</span>
+                    <div>
+                        <strong>MLOps & Model Governance</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Set up automated retraining with Airflow so models stay fresh
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Tracked experiments and versions with MLflow
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Added rolling window validation to catch model drift early
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Dropped false alerts by 27%
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🚀</span>
+                    <div>
+                        <strong>Deployment & CI/CD</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Shipped containerized services with Docker and GitHub Actions
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Built REST APIs for real-time scoring that just worked™
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Gave analyst productivity a 38% boost 💪
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">🔍</span>
+                    <div>
+                        <strong>Feature Engineering</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Dug into Snowflake and S3 data to find the good stuff
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Crafted risk indicators like transaction velocity and deviation patterns
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Used Pandas and NumPy with proper validation checks
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bullet-item">
+                    <span class="bullet-icon">👥</span>
+                    <div>
+                        <strong>Cross-functional Collaboration</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1rem; list-style: none;">
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Worked closely with risk analysts and compliance teams
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Made sure models were explainable and regulation-ready
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+                                Ran training sessions to help analysts understand model insights
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+<!-- Technology Stack -->
+        <div class="content-section">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="section-content">
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">XGBoost</span>
+                    <span class="tech-tag">Random Forest</span>
+                    <span class="tech-tag">Logistic Regression</span>
+                    <span class="tech-tag">Gradient Boosting</span>
+                    <span class="tech-tag">Azure OpenAI GPT-4</span>
+                    <span class="tech-tag">Hugging Face</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">FAISS</span>
+                    <span class="tech-tag">Snowflake</span>
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">AWS SageMaker</span>
+                    <span class="tech-tag">CUDA</span>
+                    <span class="tech-tag">Apache Airflow</span>
+                    <span class="tech-tag">MLflow</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">REST APIs</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                </div>
+            </div>
+        </div>
+
+            </div>
+</body>
+</html>

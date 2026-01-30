@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-Powered Fraudulent Job Detection | Shreya Kale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {--primary:#00d4ff;--secondary:#7000ff;--accent:#ff006e;--dark:#0a0e27;--darker:#050816;--light:#e8f4f8;--gradient-ai:linear-gradient(135deg,#00d4ff 0%,#7000ff 50%,#ff006e 100%);--card-bg:rgba(255,255,255,0.03);--card-border:rgba(0,212,255,0.2);}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Poppins',sans-serif;background:var(--darker);color:var(--light);line-height:1.6;}
+        .background-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:var(--darker);}
+        .gradient-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.3;animation:float 20s ease-in-out infinite;}
+        .orb-1{width:400px;height:400px;background:var(--accent);top:20%;left:-200px;}
+        .orb-2{width:500px;height:500px;background:var(--secondary);bottom:20%;right:-250px;}
+        @keyframes float{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(30px,-30px) rotate(180deg);}}
+        nav{padding:1.5rem 5%;background:rgba(10,14,39,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--card-border);}
+        .nav-content{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;background:var(--gradient-ai);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+        .back-btn{padding:0.8rem 2rem;background:transparent;border:2px solid var(--primary);color:var(--primary);text-decoration:none;border-radius:50px;font-family:'IBM Plex Mono',monospace;transition:all 0.3s;}
+        .back-btn:hover{background:var(--primary);color:var(--darker);}
+        .container{max-width:1200px;margin:0 auto;padding:4rem 5%;}
+        .page-header{text-align:center;margin-bottom:4rem;animation:fadeInUp 0.8s ease-out;}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+        .page-title{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;margin-bottom:1.5rem;background:var(--gradient-ai);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.3;}
+        .page-subtitle{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:1rem;}
+        .content-section{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:2.5rem;margin-bottom:2rem;animation:fadeInUp 0.8s ease-out;}
+        .section-title{font-family:'Orbitron',sans-serif;font-size:1.8rem;color:var(--primary);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid rgba(0,212,255,0.3);}
+        .section-content{color:rgba(232,244,248,0.85);line-height:1.8;}
+        .bullet-list{list-style:none;display:flex;flex-direction:column;gap:1rem;}
+        .bullet-item{display:flex;gap:1rem;align-items:start;padding:1rem;background:rgba(0,212,255,0.03);border-left:3px solid var(--primary);border-radius:10px;}
+        .bullet-icon{color:var(--primary);font-size:1.2rem;flex-shrink:0;}
+        .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0;}
+        .metric-card{background:rgba(255,0,110,0.05);border:1px solid rgba(255,0,110,0.3);padding:1.5rem;border-radius:15px;text-align:center;}
+        .metric-value{font-family:'Orbitron',sans-serif;font-size:2.5rem;color:var(--accent);font-weight:900;display:block;margin-bottom:0.5rem;}
+        .metric-label{font-size:0.9rem;color:rgba(232,244,248,0.7);}
+        .tech-stack{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;}
+        .tech-tag{padding:0.5rem 1rem;background:rgba(112,0,255,0.1);border:1px solid rgba(112,0,255,0.3);border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--secondary);}
+        @media(max-width:768px){.page-title{font-size:1.8rem;}.metrics-grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <div class="background-animation"><div class="gradient-orb orb-1"></div><div class="gradient-orb orb-2"></div></div>
+    <nav><div class="nav-content"><a href="index.html" class="logo">SHREYA.AI</a><a href="index.html#projects" class="back-btn">← Back to Portfolio</a></div></nav>
+    <div class="container">
+        <div class="page-header"><h1 class="page-title">LLM-POWERED FRAUDULENT JOB DETECTION</h1><p class="page-subtitle">Academic / Research Project</p></div>
+        <div class="content-section"><h2 class="section-title">Project Overview</h2><div class="section-content"><p>This project emerged from addressing the critical problem of fraudulent job listings in the digital recruitment space, particularly during the remote work boom. The objective was to develop an advanced fraud detection model using Large Language Models (LLMs) with prompt engineering and fine-tuning techniques to identify fraudulent job postings with exceptional accuracy.</p><p style="margin-top:1rem;">The project demanded a creative blend of natural language processing, prompt engineering, model fine-tuning, and traditional machine learning techniques to create a robust classification system that could protect job seekers from scams and fraudulent opportunities.</p></div></div>
+        <div class="content-section"><h2 class="section-title">Performance Metrics</h2><div class="metrics-grid"><div class="metric-card"><span class="metric-value">95%</span><span class="metric-label">Test Accuracy</span></div><div class="metric-card"><span class="metric-value">91%</span><span class="metric-label">Precision</span></div><div class="metric-card"><span class="metric-value">0.968</span><span class="metric-label">ROC-AUC Score</span></div><div class="metric-card"><span class="metric-value">15%</span><span class="metric-label">Recall Improvement</span></div><div class="metric-card"><span class="metric-value">17.8K</span><span class="metric-label">Job Listings Analyzed</span></div></div></div>
+        <div class="content-section"><h2 class="section-title">Technical Implementation</h2><ul class="bullet-list"><li class="bullet-item"><span class="bullet-icon">🤖</span><div><strong>LLM Integration:</strong> Initiated development of LLM-powered fraud detection by applying advanced prompt engineering and fine-tuning techniques using OpenAI GPT-3.5 and GPT-4 APIs to achieve 95% test accuracy with strong NLP-driven classification performance.</div></li><li class="bullet-item"><span class="bullet-icon">📊</span><div><strong>Data Processing:</strong> Collected and curated 17.8K job listings. Performed extensive NLP preprocessing including tokenization, stopword removal, and TF-IDF encoding to create clean, structured input features.</div></li><li class="bullet-item"><span class="bullet-icon">🔍</span><div><strong>Feature Engineering:</strong> Engineered sophisticated features including description length, suspicious keyword detection, location patterns, and employer signals. Created custom embedding vectors using DistilBERT and OpenAI Ada v2.</div></li><li class="bullet-item"><span class="bullet-icon">⚖️</span><div><strong>Class Balancing:</strong> Applied SMOTE for class balancing. Implemented threshold tuning to enhance recall for fraudulent listings by 15% while maintaining 91% precision and 0.968 ROC-AUC score.</div></li><li class="bullet-item"><span class="bullet-icon">🎯</span><div><strong>Model Fine-Tuning:</strong> Fine-tuned LLM using Hugging Face Trainer with fraud-specific prompt patterns. Implemented custom classification heads on pre-trained models and used k-fold cross-validation.</div></li></ul></div>
+        <div class="content-section"><h2 class="section-title">Technology Stack</h2><div class="section-content"><div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">OpenAI GPT-3.5/4</span><span class="tech-tag">Hugging Face</span><span class="tech-tag">DistilBERT</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">NLTK</span><span class="tech-tag">spaCy</span><span class="tech-tag">TF-IDF</span><span class="tech-tag">SMOTE</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span></div></div></div>
+    </div>
+</body>
+</html>
